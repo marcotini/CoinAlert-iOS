@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let cb = NSMutableAttributedString(string: "Coinbase")
-            cb.addAttribute(NSUnderlineStyleAttributeName, value: 1, range: NSMakeRange(0, cb.length))
+        cb.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSMakeRange(0, cb.length))
         coinbaseLabel.attributedText = cb
         
         coinbaseLabel.isUserInteractionEnabled = true
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func cbPressed() {
+    @objc func cbPressed() {
         if let url = URL(string: "https://www.coinbase.com/join/d1str0"){
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func timeBarUpdate() {
+    @objc func timeBarUpdate() {
         priceLabel.text = currentPrice
         let prog = timeBar.progress + 0.0066666
         if prog >= 1 {
